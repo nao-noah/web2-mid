@@ -22,14 +22,41 @@ function App() {
     setItem2(0);
   };
 
+  const removeItem = (itemNum) => {
+    if (itemNum === 1) {
+      if (item1 - 1 < 0) return;
+      setItem1(item1 - 1);
+    }
+    if (itemNum === 2) {
+      if (item2 - 1 < 0) return;
+      setItem2(item2 - 1);
+    }
+  };
+
   return (
     <div className="App">
       <div class="title">AMAZON 2</div>
 
       <div class="cart">
         <div class="cart-title"></div>
-        {<div>Brown Coat: {item1}</div>}
-        {<div>Blue Coat: {item2}</div>}
+        {
+          <div>
+            Brown Coat: {item1} - ${item1 * 150}
+            {"   "}
+            <button class="removebtn" onClick={() => removeItem(1)}>
+              x
+            </button>
+          </div>
+        }
+        {
+          <div>
+            Blue Coat: {item2} - ${item2 * 80}
+            {"   "}
+            <button class="removebtn" onClick={() => removeItem(2)}>
+              x
+            </button>
+          </div>
+        }
         <button onClick={checkout}>Check Out</button>
       </div>
 
@@ -44,6 +71,7 @@ function App() {
               Belt
             </b>
             <br />
+            <div>$150</div>
             <button class="addtocart" id="add1" onClick={() => addToCart(1)}>
               Add to Cart
             </button>
@@ -69,6 +97,7 @@ function App() {
               Belt
             </b>
             <br />
+            <div>$80</div>
             <button class="addtocart" id="add2" onClick={() => addToCart(2)}>
               Add to Cart
             </button>

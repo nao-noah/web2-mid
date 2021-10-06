@@ -18,6 +18,12 @@ body {
   justify-content: space-around;
 }
 
+@media (max-width: 800px) {
+  .item-list {
+    flex-direction: column;
+  }
+}
+
 .item {
   width: 400px;
 }
@@ -28,4 +34,8 @@ body {
 
 .cart-title {
   font-size: 32px;
+}
+
+.removebtn {
+  cursor: pointer;
 }
