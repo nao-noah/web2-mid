@@ -1,9 +1,23 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [item1, setItem1] = useState(0);
   const [item2, setItem2] = useState(0);
+  const [item1IsLiked, setItem1IsLiked] = useState(false);
+  const [item2IsLiked, setItem2IsLiked] = useState(false);
+
+  useEffect(() => {
+    const like1 = document.getElementById("like-1");
+    const like2 = document.getElementById("like-2");
+    like1.addEventListener("click", () => likeItem(1));
+    like2.addEventListener("click", () => likeItem(2));
+  }, []);
+
+  const likeItem = (itemNum) => {
+    if (itemNum === 1) setItem1IsLiked(true);
+    else if (itemNum === 2) setItem2IsLiked(true);
+  };
 
   const addToCart = (itemNum) => {
     alert("Hey, you added the item to the cart");
@@ -80,6 +94,8 @@ function App() {
             <button class="addtocart" id="add1" onClick={() => addToCart(1)}>
               Add to Cart
             </button>
+            {!item1IsLiked && <button id="like-1">Like</button>}
+            {item1IsLiked && "👍"}
             <br />
             <br />
             Style: Down coat + Faux Fur Collar Material: <br />
@@ -106,6 +122,8 @@ function App() {
             <button class="addtocart" id="add2" onClick={() => addToCart(2)}>
               Add to Cart
             </button>
+            {!item2IsLiked && <button id="like-2">Like</button>}
+            {item2IsLiked && "👍"}
             <br />
             <br />
             Style: Down coat + Faux Fur Collar Material: <br />
