@@ -17,7 +17,12 @@ function App() {
       return;
     }
 
-    alert("Thanks! See you next time at Amazon 3.");
+    const answer = window.confirm(
+      `The total is $${item1 * 150 + item2 * 80}. You wanna really buy them?`
+    );
+    if (!answer) return;
+
+    alert(`Thanks! See you next time at Amazon 3.`);
     setItem1(0);
     setItem2(0);
   };
